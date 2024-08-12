@@ -16,7 +16,7 @@ install_obb_cli(){
   setup_nvm
   log "Installing OBB CLI via npm"
   npm install -g @onboardbase/cli >/dev/null 2>&1
-  log "OBB CLI $(onboardbase -v) installed successfully"
+  log "OBB CLI installed successfully with version: \"$(onboardbase -v)\""
 }
 
 
@@ -75,7 +75,7 @@ if ! is_cmd_installed node;
 then
   install_nodejs;
 else
-  log "NodeJS $(onboardbase -v) is installed."
+  log "NodeJS \"$(node -v)\" is installed."
 fi
 
 install_obb_cli
@@ -101,3 +101,5 @@ if [ -n "$ONBOARDBASE_PROJECT" ] && [ -n "$ONBOARDBASE_ENVIRONMENT" ];
 then
   create_yml_file $ONBOARDBASE_PROJECT $ONBOARDBASE_ENVIRONMENT;
 fi
+
+log "Done!!!"

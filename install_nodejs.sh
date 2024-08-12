@@ -31,8 +31,8 @@ nvm use default
 
 
 echo "==> Checking for versions"
-nvm --version
-node --version
-npm --version
+log "nvm: $(nvm --version)"
+log "node: $(node --version)"
+log "npm: $(npm --version)"
 
 nvm cache clear

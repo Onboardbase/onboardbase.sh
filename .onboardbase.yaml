@@ -1,6 +1,0 @@
-api_key:
-setup:
-  project: project
-  environment: production
-secrets:
-  local:
