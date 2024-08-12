@@ -2,64 +2,13 @@
 
 set -e -o pipefail
 
-setup_yum_registry() {
-  wd=$(pwd)
-  cd /etc/yum.repos.d/
-  sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*
-  sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*
-  cd "$wd"
-}
-
-get_package_manager(){
-  if command -v apt >/dev/null 2>&1; then
-    echo "apt"
-  elif command -v yum >/dev/null 2>&1; then
-    echo "yum"
-  elif command -v dnf >/dev/null 2>&1; then
-    echo "dnf"
-  elif command -v pacman >/dev/null 2>&1; then
-    echo "pacman"
-  else
-    echo "unknown"
-  fi
-}
-
-install_deps_with_package_manager() {
-  packages="curl"
-  package_manager=$1
-
-  cmd="$package_manager install $packages -y"
-  if [ "$package_manager" = "pacman" ];
-  then
-	cmd="$package_manager -S $packages"
-  fi
-  log "Installing package dependecies with the command: \"$cmd\""
-  eval "$cmd >/dev/null"
-}
-
-install_deps(){
-  package_manager=$(get_package_manager)
-  case "$package_manager" in
-    "yum" | "dnf" | "apt" | "pacman")
-      # setup yum registry
-      if [ $package_manager = "yum" ]; then setup_yum_registry; fi
-      install_deps_with_package_manager $package_manager
-      ;;
-    *)
-      log "Unsupported package manager. Please install Node.js manually"
-      ;;
-   esac
-}
-
-
 install_nodejs(){
-  install_deps # installs the dependencies that is required for the nodejs setup
   curl -sS https://raw.githubusercontent.com/Onboardbase/onboardbase.sh/main/install_nodejs.sh | bash - 
-  source ~/.bashrc
 }
 
 
 install_obb_cli(){
+  source ~/.bashrc
   log "Installing OBB CLI via npm"
   npm install -g @onboardbase/cli >/dev/null 2>&1
   log "OBB CLI $(onboardbase -v) installed successfully"
