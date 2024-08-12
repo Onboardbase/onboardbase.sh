@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -euf -o pipefail
+set -e -o pipefail
 
 get_package_manager(){
   if command -v apt >/dev/null 2>&1; then
@@ -90,7 +90,8 @@ secrets:
 EOF
 )
 file_path="$(pwd)/.onboardbase.yaml"
-echo "$yml" > $file_path
+
+echo -e "$yml" > $file_path
 log "OBB Setup YAML file written to $file_path"
 }
 
@@ -100,29 +101,36 @@ log "OBB Setup YAML file written to $file_path"
 
 if is_cmd_installed onboardbase; 
 then
-  log "onboardbase$(onboardbase -v) is already installed";
-  exit 0;
+  log "onboardbase \"$(onboardbase -v)\" is already installed";
+  # exit 0;
 fi
 
 # ensures that nodejs is intalled
-if !is_cmd_installed node;
+if ! is_cmd_installed node;
 then
   install_nodejs;
 fi
 
-install_obb_cli
+# install_obb_cli
 
 if [ -n "$ONBOARDBASE_TOKEN" ];
 then
   configure_obb_cli_token;
 fi
 
-if [ -n "$ONBOARDBASE_PROJECT" && -n "$ONBOARDBASE_ENVIRONMENT"];
-then
-  create_yml_file $ONBOARDBASE_PROJECT $ONBOARDBASE_ENVIRONMENT;
-fi
 
 if [ -n "$ONBOARDBASE_API_HOST" ];
 then
   configure_obb_cli_api_host;
+fi
+
+
+if [ -n "$ONBOARDBASE_DASHBOARD_HOST" ];
+then
+  configure_obb_cli_dashboard_host;
+fi
+
+if [ -n "$ONBOARDBASE_PROJECT" ] && [ -n "$ONBOARDBASE_ENVIRONMENT" ];
+then
+  create_yml_file $ONBOARDBASE_PROJECT $ONBOARDBASE_ENVIRONMENT;
 fi
