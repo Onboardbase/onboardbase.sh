@@ -2,6 +2,14 @@
 
 set -e -o pipefail
 
+setup_yum_registry() {
+  wd=$(pwd)
+  cd /etc/yum.repos.d/
+  sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*
+  sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*
+  cd "$wd"
+}
+
 get_package_manager(){
   if command -v apt >/dev/null 2>&1; then
     echo "apt"
@@ -33,10 +41,12 @@ install_deps(){
   package_manager=$(get_package_manager)
   case "$package_manager" in
     "yum" | "dnf" | "apt" | "pacman")
+      # setup yum registry
+      if [ $package_manager = "yum"]; then setup_yum_registry; fi
       install_deps_with_package_manager $package_manager
       ;;
     *)
-      log "Unsuppoerted package manager. Please install Node.js manually"
+      log "Unsupported package manager. Please install Node.js manually"
       ;;
    esac
 }
