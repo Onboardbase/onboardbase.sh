@@ -54,7 +54,7 @@ install_deps(){
 
 install_nodejs(){
   install_deps # installs the dependencies that is required for the nodejs setup
-  curl -sS https://raw.githubusercontent.com/Onboardbase/onboardbase.sh/main/install_nodejs.sh | INSTALL_NODE_VER=18 bash - >/dev/null
+  curl -sS https://raw.githubusercontent.com/Onboardbase/onboardbase.sh/main/install_nodejs.sh | bash - >/dev/null
 }
 
 

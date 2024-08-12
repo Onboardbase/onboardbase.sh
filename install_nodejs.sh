@@ -4,7 +4,7 @@ set -e
 # Install node and npm via nvm - https://github.com/creationix/nvm
 
 # Define versions
-INSTALL_NODE_VER=10
+INSTALL_NODE_VER=18
 INSTALL_NVM_VER=0.33.11
 INSTALL_YARN_VER=1.7.0
 
