@@ -3,12 +3,14 @@
 
 The motive is to ease the setup time to getting onboardbase running on an uninstalled machine
 
-### Installation
+### Usage
 ---
 ```bash
 sudo apt-get install curl
 
 curl -Ss https://raw.githubusercontent.com/Onboardbase/onboardbase.sh/main/install.sh | bash -
+
+onboardbase -v
 ```
 ---
 
