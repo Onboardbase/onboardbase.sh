@@ -8,6 +8,9 @@ INSTALL_NODE_VER=18
 INSTALL_NVM_VER=0.33.11
 INSTALL_YARN_VER=1.7.0
 
+echo "==> Ensuring .bashrc exists and is writable"
+touch ~/.bashrc
+
 echo "==> Installing node version manager (NVM). Version $INSTALL_NVM_VER"
 # Removed if already installed
 rm -rf ~/.nvm
