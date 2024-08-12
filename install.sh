@@ -6,9 +6,14 @@ install_nodejs(){
   curl -sS https://raw.githubusercontent.com/Onboardbase/onboardbase.sh/main/install_nodejs.sh | bash - 
 }
 
+setup_nvm(){
+  NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+}
 
 install_obb_cli(){
-  source ~/.bashrc
+  setup_nvm
   log "Installing OBB CLI via npm"
   npm install -g @onboardbase/cli >/dev/null 2>&1
   log "OBB CLI $(onboardbase -v) installed successfully"
