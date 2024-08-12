@@ -7,7 +7,7 @@ The motive is to ease the setup time to getting onboardbase running on an uninst
 ```bash
 sudo apt-get install curl
 
-curl -Ss github.com/Onboardbase/onboardbase.sh/main/install.sh | bash -
+curl -Ss https://raw.githubusercontent.com/Onboardbase/onboardbase.sh/main/install.sh | bash -
 ```
 
 #### Supported Environment variables
