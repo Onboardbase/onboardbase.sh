@@ -62,7 +62,7 @@ install_nodejs(){
 install_obb_cli(){
   log "Installing OBB CLI via npm"
   npm install -g @onboardbase/cli >/dev/null 2>&1
-  log "OBB CLI installed successfully"
+  log "OBB CLI $(onboardbase -v) installed successfully"
 }
 
 
@@ -112,7 +112,7 @@ log "OBB Setup YAML file written to $file_path"
 
 if is_cmd_installed onboardbase; 
 then
-  log "onboardbase is already installed with: \"$(onboardbase -v)\". Use sudo onbaordbase update to get the latest version.";
+  log "onboardbase is already installed with: \"$(onboardbase -v)\". Use \"sudo onbaordbase update\" to get the latest version.";
   exit 0;
 fi
 
