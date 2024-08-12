@@ -60,9 +60,9 @@ EOF
   log "OBB Setup YAML file written to $file_path"
 }
 
-# =======================
-# Run
-# =======================
+# ========================
+# Install Node and OBB CLI
+# ========================
 
 if is_cmd_installed onboardbase; 
 then
@@ -79,6 +79,10 @@ else
 fi
 
 install_obb_cli
+
+# ========================
+# Configure the CLI
+# ========================
 
 if [ -n "$ONBOARDBASE_TOKEN" ];
 then
