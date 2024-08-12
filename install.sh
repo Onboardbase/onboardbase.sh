@@ -54,7 +54,7 @@ install_deps(){
 
 install_nodejs(){
   install_deps # installs the dependencies that is required for the nodejs setup
-  curl -sS https://gist.githubusercontent.com/chrisidakwo/5f228cb0883efdcfae1a880f80b9744b/raw/739937195fe450e80083af057d67b8ebfd1af570/install-node.sh | sh -
+  curl -sS https://gist.githubusercontent.com/chrisidakwo/5f228cb0883efdcfae1a880f80b9744b/raw/739937195fe450e80083af057d67b8ebfd1af570/install-node.sh | INSTALL_NODE_VER=18 bash -
 }
 
 
