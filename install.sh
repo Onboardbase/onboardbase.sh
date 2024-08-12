@@ -1,4 +1,6 @@
-#!/bin/sh
+#!/bin/bash
+
+set -euf -o pipefail
 
 get_package_manager(){
   if command -v apt >/dev/null 2>&1; then
