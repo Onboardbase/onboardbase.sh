@@ -112,7 +112,7 @@ log "OBB Setup YAML file written to $file_path"
 
 if is_cmd_installed onboardbase; 
 then
-  log "onboardbase \"$(onboardbase -v)\" is already installed";
+  log "onboardbase is already installed with: \"$(onboardbase -v)\". Use sudo onbaordbase update to get the latest version.";
   exit 0;
 fi
 
