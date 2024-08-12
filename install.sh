@@ -113,13 +113,15 @@ log "OBB Setup YAML file written to $file_path"
 if is_cmd_installed onboardbase; 
 then
   log "onboardbase \"$(onboardbase -v)\" is already installed";
-  # exit 0;
+  exit 0;
 fi
 
 # ensures that nodejs is intalled
 if ! is_cmd_installed node;
 then
   install_nodejs;
+else
+  log "NodeJS $(onboardbase -v) is installed."
 fi
 
 install_obb_cli
