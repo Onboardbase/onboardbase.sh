@@ -91,7 +91,7 @@ configure_obb_cli_dashboard_host(){
 }
 
 create_yml_file(){
-yml=$(cat <<EOF
+  yml=$(cat <<EOF
 api_key:
 setup:
   project: $1
@@ -100,10 +100,10 @@ secrets:
   local:
 EOF
 )
-file_path="$(pwd)/.onboardbase.yaml"
+  file_path="$(pwd)/.onboardbase.yaml"
 
-echo -e "$yml" > $file_path
-log "OBB Setup YAML file written to $file_path"
+  echo -e "$yml" > $file_path
+  log "OBB Setup YAML file written to $file_path"
 }
 
 # =======================
