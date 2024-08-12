@@ -122,7 +122,7 @@ then
   install_nodejs;
 fi
 
-# install_obb_cli
+install_obb_cli
 
 if [ -n "$ONBOARDBASE_TOKEN" ];
 then
