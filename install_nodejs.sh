@@ -1,6 +1,11 @@
 #!/bin/bash
 
 set -e
+
+log(){
+    echo ">>>  $1"
+}
+
 # Install node and npm via nvm - https://github.com/creationix/nvm
 
 # Define versions
