@@ -10,7 +10,7 @@ The motive is to ease the setup time to getting onboardbase running on an uninst
 # apt-get upgrade && apt-get update -y && apt-get install -y curl
 # yum install curl
 
-curl -Ss https://files.onboardbase.com/install.sh | bash - &&\
+curl -Ss https://files.onboardbase.com/install.sh | bash - && \
   source ~/.bashrc && \
   onboardbase -v
 ```
