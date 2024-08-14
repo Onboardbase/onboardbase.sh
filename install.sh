@@ -18,7 +18,6 @@ install_obb_cli(){
   log "OBB CLI installed successfully with version: \"$(onboardbase -v)\""
 }
 
-
 is_cmd_installed(){
  command -v "$1" >/dev/null 2>&1;
 }
@@ -36,7 +35,6 @@ configure_obb_cli_api_host(){
   log "Configuring onboardbase api host"
   onboardbase config:set --api-host=$ONBOARDBASE_API_HOST --scope=/
 }
-
 
 configure_obb_cli_dashboard_host(){
   log "Configuring onboardbase dashboard host"
@@ -69,10 +67,6 @@ run_install_cli(){
   fi
 
   install_obb_cli
-
-  
-  log "Done!!!"
-
 }
 
 run_configure_cli(){
@@ -114,3 +108,5 @@ fi
 # Configure the CLI
 # ========================
 run_configure_cli
+
+log "Done!!!"
