@@ -59,6 +59,46 @@ EOF
   log "OBB Setup YAML file written to $file_path"
 }
 
+run_install_cli(){
+  # ensures that nodejs is intalled
+  if ! is_cmd_installed node;
+  then
+    install_nodejs;
+  else
+    log "NodeJS \"$(node -v)\" is installed."
+  fi
+
+  install_obb_cli
+
+  
+  log "Done!!!"
+
+}
+
+run_configure_cli(){
+  if [ -n "$ONBOARDBASE_TOKEN" ];
+  then
+    configure_obb_cli_token;
+  fi
+
+
+  if [ -n "$ONBOARDBASE_API_HOST" ];
+  then
+    configure_obb_cli_api_host;
+  fi
+
+
+  if [ -n "$ONBOARDBASE_DASHBOARD_HOST" ];
+  then
+    configure_obb_cli_dashboard_host;
+  fi
+
+  if [ -n "$ONBOARDBASE_PROJECT" ] && [ -n "$ONBOARDBASE_ENVIRONMENT" ];
+  then
+    create_yml_file $ONBOARDBASE_PROJECT $ONBOARDBASE_ENVIRONMENT;
+  fi
+}
+
 # ========================
 # Install Node and OBB CLI
 # ========================
@@ -66,43 +106,11 @@ EOF
 if is_cmd_installed onboardbase; 
 then
   log "onboardbase is already installed with: \"$(onboardbase -v)\". Use \"sudo onbaordbase update\" to get the latest version.";
-  exit 0;
-fi
-
-# ensures that nodejs is intalled
-if ! is_cmd_installed node;
-then
-  install_nodejs;
 else
-  log "NodeJS \"$(node -v)\" is installed."
+  run_install_cli
 fi
-
-install_obb_cli
 
 # ========================
 # Configure the CLI
 # ========================
-
-if [ -n "$ONBOARDBASE_TOKEN" ];
-then
-  configure_obb_cli_token;
-fi
-
-
-if [ -n "$ONBOARDBASE_API_HOST" ];
-then
-  configure_obb_cli_api_host;
-fi
-
-
-if [ -n "$ONBOARDBASE_DASHBOARD_HOST" ];
-then
-  configure_obb_cli_dashboard_host;
-fi
-
-if [ -n "$ONBOARDBASE_PROJECT" ] && [ -n "$ONBOARDBASE_ENVIRONMENT" ];
-then
-  create_yml_file $ONBOARDBASE_PROJECT $ONBOARDBASE_ENVIRONMENT;
-fi
-
-log "Done!!!"
+run_configure_cli

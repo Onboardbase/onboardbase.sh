@@ -27,15 +27,15 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v$INSTALL_NVM_VER/install.
 # Make nvm command available to terminal
 source ~/.nvm/nvm.sh
 
-echo "==> Installing node js version $INSTALL_NODE_VER"
+log "Installing node js version $INSTALL_NODE_VER"
 nvm install $INSTALL_NODE_VER
 
-echo "==> Make this version system default"
+log "Make this version system default"
 nvm alias default $INSTALL_NODE_VER
 nvm use default
 
 
-echo "==> Checking for versions"
+log "Checking for versions"
 log "nvm: $(nvm --version)"
 log "node: $(node --version)"
 log "npm: $(npm --version)"
