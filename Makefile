@@ -1,7 +1,7 @@
 BINBATSBINPATH=./test/bats/bin/bats
-BINBATSTESTSUITES=./test/bats/bin/bats
+BINBATSTESTSUITES=test/
 
 
 .PHONY: test
-test: $(BINBATSPATH) $(BINBATSTESTSUITES)
-	
+test:
+	$(BINBATSBINPATH) test/
