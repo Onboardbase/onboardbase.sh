@@ -99,7 +99,7 @@ run_configure_cli(){
 
 if is_cmd_installed onboardbase; 
 then
-  log "onboardbase is already installed with: \"$(onboardbase -v)\". Use \"sudo onbaordbase update\" to get the latest version.";
+  log "onboardbase is already installed with: \"$(onboardbase -v)\". Use \"sudo onboardbase update\" to get the latest version.";
 else
   run_install_cli
 fi
