@@ -1,5 +1,5 @@
 
-## Integrate Onboardbase on production machines
+## Onboardbase on production machines
 
 Our goal with this install script is to ease the setup time for getting Onboardbase running on an uninstalled machine.
 
