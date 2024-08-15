@@ -1,7 +1,7 @@
 
-## Onboardbase install shell script
+## Onboardbase install script
 
-The motive is to ease the setup time to getting onboardbase running on an uninstalled machine
+The goal for us it to ease the setup time to getting onboardbase running on an uninstalled machine.
 
 ### Usage
 ---
