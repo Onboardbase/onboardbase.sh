@@ -3,8 +3,6 @@
 
 Our goal with this install script is to ease the setup time for getting Onboardbase running on an uninstalled machine.
 
-Onboardbase offers local development support for front-end frameworks and various cloud services. This allows us to offer production support so people don't have to install integrations for their deployment platforms. It would inject Onboardbase into your compute: Azure/GCP/DO/AWS VMs.
-
 ### Usage
 ---
 ```bash
